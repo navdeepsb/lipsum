@@ -1,0 +1,11 @@
+{
+  "name": "lipsum699",
+  "version": "0.0.0",
+  "description": "Demo poject for trying out Firebase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Navdeep Singh Bagga <navdeepb3191@gmail.com>",
+  "license": "MIT"
+}

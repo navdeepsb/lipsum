@@ -1,0 +1,8 @@
+.grid .col {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.grid .col.col-6 {
+    width: 50%;
+}

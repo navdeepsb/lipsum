@@ -1,0 +1,335 @@
+<!--
+ ! @author Navdeep Singh Bagga
+ !         navdeepb3191@gmail.com
+ !   @desc A demo project for trying out Firebase
+ ! @course SI 699 - Theories of Social Computing
+ !   @term Fall 2017
+ !   @code lipsum699 (Firebase)
+ !-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase DB Console | Fall 2017</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rozha+One">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="accent">Firebase DB Console</h1>
+        <h2>Project: &quot;Experience what others experience&quot;</h2>
+        <h3>Isle of Dogs | SI699.003</h3>
+
+        <br />
+        <br />
+        <div class="grid">
+            <div class="col col-6">
+
+                <p class="subtitle">Users:</p>
+                <form action="#">
+                    <div>
+                        <label for="_key">_key</label>
+                        <input type="text" id="_key" name="_key" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="fname">First name</label>
+                        <input type="text" id="fname" name="fname" autocomplete="off" spellcheck="false" placeholder="Ex. John">
+                    </div>
+                    <div>
+                        <label for="lname">Last name</label>
+                        <input type="text" id="lname" name="lname" autocomplete="off" spellcheck="false" placeholder="Ex. Jacobie">
+                    </div>
+                    <div>
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" autocomplete="off" spellcheck="false" placeholder="Ex. jacob1e">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" autocomplete="off" spellcheck="false" placeholder="Ex. john.jacobie@world.com">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="text" id="password" name="password" autocomplete="off" spellcheck="false" value="abc@123">
+                    </div>
+                    <div>
+                        <label for="btnAddUser"></label>
+                        <button id="btnAddUser" class="js-submit-form" data-model-store="users" data-relational="usersUpdate">Add / update user</button>
+                    </div>
+                </form><!-- /users -->
+
+                <br />
+                <br />
+
+                <p class="subtitle">Categories:</p>
+                <form action="#">
+                    <div>
+                        <label for="_key">_key</label>
+                        <input type="text" id="_key" name="_key" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="catName">Category</label>
+                        <input type="text" id="catName" name="catName" autocomplete="off" spellcheck="false" placeholder="Ex. Long Walk">
+                    </div>
+                    <div>
+                        <label for="btnAddCat"></label>
+                        <button id="btnAddCat" class="js-submit-form" data-model-store="categories" data-relational="categoriesUpdate">Add / update category</button>
+                    </div>
+                </form><!-- /categories -->
+
+                <br />
+                <br />
+
+                <p class="subtitle">Experiences:</p>
+                <form action="#">
+                    <div>
+                        <label for="_key">_key</label>
+                        <input type="text" id="_key" name="_key" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="xpName">Experience name</label>
+                        <input type="text" id="xpName" name="xpName" autocomplete="off" spellcheck="false" placeholder="Ex. Shortcut to NQ">
+                    </div>
+                    <div>
+                        <label for="category">Category</label>
+                        <select id="category" name="category" class="js-cat-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="isPrivate">Private?</label>
+                        <input type="checkbox" id="isPrivate" name="isPrivate" value="true">
+                    </div>
+                    <div>
+                        <label for="shots">Shots / photos</label>
+                        <input type="text" id="shots" name="json$shots" autocomplete="off" spellcheck="false" value="null">
+                        <!-- <select id="shots" name="shots" class="js-xp-shots">
+                            <option value="-1">No shots uploaded yet!</option>
+                        </select> -->
+                    </div>
+                    <div>
+                        <label for="parentId">Parent Experience key (meta)</label>
+                        <input type="text" id="parentId" name="json$parentId" autocomplete="off" spellcheck="false" value="null">
+                        <!-- <select id="parentId" name="parentId" class="js-xp-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select> -->
+                    </div>
+                    <div>
+                        <label for="owner">Created by (meta)</label>
+                        <select id="owner" name="owner" class="js-users-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="createdOn">Created on (meta)</label>
+                        <input type="text" id="createdOn" name="num$createdOn" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="lastModifiedOn">Last modified on (meta)</label>
+                        <input type="text" id="lastModifiedOn" name="num$lastModifiedOn" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="isQuarantined">Quarantined? (meta)</label>
+                        <input type="checkbox" id="isQuarantined" name="isQuarantined" value="true">
+                    </div>
+                    <div>
+                        <label for="btnAddXp"></label>
+                        <button id="btnAddXp" class="js-submit-form" data-model-store="experiences">Add / update experience</button>
+                    </div>
+                </form><!-- /xps -->
+
+                <p class="subtitle">Shots:</p>
+                <form action="#">
+                    <div>
+                        <label for="_key">_key</label>
+                        <input type="text" id="_key" name="_key" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="fileUrl">File url (file data)</label>
+                        <input type="text" id="fileUrl" name="fileUrl" autocomplete="off" spellcheck="false" placeholder="https://">
+                    </div>
+                    <div>
+                        <label for="caption">Caption</label>
+                        <textarea name="caption" id="caption" autocomplete="off" spellcheck="false" placeholder="Beautiful sunrise today here at the bay..."></textarea>
+                    </div>
+                    <div>
+                        <label for="parentId">Parent Experience key (meta)</label>
+                        <select id="parentId" name="parentId" class="js-xp-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="owner">Created by (meta)</label>
+                        <select id="owner" name="owner" class="js-users-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="createdOn">Uploaded on (meta)</label>
+                        <input type="text" id="createdOn" name="num$createdOn" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="lastModifiedOn">Last modified on (meta)</label>
+                        <input type="text" id="lastModifiedOn" name="num$lastModifiedOn" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="expiresOn">Expires on (meta)</label>
+                        <input type="text" id="expiresOn" name="num$expiresOn" autocomplete="off" spellcheck="false" value="-1">
+                    </div>
+                    <div>
+                        <label for="geoLat">Lat (meta)</label>
+                        <input type="text" id="geoLat" name="num$geoLat" autocomplete="off" spellcheck="false" value="0.0">
+                    </div>
+                    <div>
+                        <label for="geoLong">Long (meta)</label>
+                        <input type="text" id="geoLong" name="num$geoLong" autocomplete="off" spellcheck="false" value="0.0">
+                    </div>
+                    <div>
+                        <label for="numWereHere"># were here (meta)</label>
+                        <input type="text" id="numWereHere" name="num$numWereHere" autocomplete="off" spellcheck="false" value="0">
+                    </div>
+                    <div>
+                        <label for="numWishWereHere"># wish were here (meta)</label>
+                        <input type="text" id="numWishWereHere" name="num$numWishWereHere" autocomplete="off" spellcheck="false" value="0">
+                    </div>
+                    <div>
+                        <label for="isQuarantined">Quarantined? (meta)</label>
+                        <input type="checkbox" id="isQuarantined" name="isQuarantined" value="true">
+                    </div>
+                    <div>
+                        <label for="btnAddShot"></label>
+                        <button id="btnAddShot" class="js-submit-form" data-model-store="shots" data-nested-model="true" data-parent-model="experiences">Add / update shot</button>
+                    </div>
+                </form><!-- /shots -->
+
+                <br />
+                <br />
+
+                <p class="subtitle">Comments:</p>
+                <form action="#">
+                    <div>
+                        <label for="_key">_key</label>
+                        <input type="text" id="_key" name="_key" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="content">Content</label>
+                        <textarea name="content" id="content" autocomplete="off" spellcheck="false" placeholder="Great shot!"></textarea>
+                    </div>
+                    <div>
+                        <label for="grandParentId">Grandparent xp (meta)</label>
+                        <select id="grandParentId" name="grandParentId" class="js-xp-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="parentId">Parent Shot (meta)</label>
+                        <select id="parentId" name="parentId" class="js-shots-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="owner">Created by (meta)</label>
+                        <select id="owner" name="owner" class="js-users-dropdown">
+                            <option value="-1">Select from below</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="createdOn">Created on (meta)</label>
+                        <input type="text" id="createdOn" name="num$createdOn" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="lastModifiedOn">Last modified on (meta)</label>
+                        <input type="text" id="lastModifiedOn" name="num$lastModifiedOn" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div>
+                        <label for="numUpvotes"># up votes (meta)</label>
+                        <input type="text" id="numUpvotes" name="num$numUpvotes" autocomplete="off" spellcheck="false" value="0">
+                    </div>
+                    <div>
+                        <label for="isQuarantined">Quarantined? (meta)</label>
+                        <input type="checkbox" id="isQuarantined" name="isQuarantined" value="true">
+                    </div>
+                    <div>
+                        <label for="btnAddComment"></label>
+                        <button id="btnAddComment" class="js-submit-form" data-model-store="comments" data-nested-model="true" data-nested-level="2" data-parent-model="shots" data-grandparent-model="experiences">Add / update comment</button>
+                    </div>
+                </form><!-- /comments -->
+
+                <br />
+                <br />
+                <h2 class="subtitle">Utilities</h2>
+                <ul>
+                    <li>
+                        Current timestamp: <a href="#" id="timegen">Generate</a>
+                        <br />
+                        <p class="res">Long: <script>document.write(Date.now())</script></p>
+                    </li>
+                </ul>
+            </div><!--
+            --><div class="col col-6 console">
+                    <h2 class="subtitle">Users:</h2>
+                    <ul class="js-users"></ul>
+                    <hr />
+                    <br />
+
+                    <h2 class="subtitle">Categories:</h2>
+                    <ul class="js-categories"></ul>
+                    <hr />
+                    <br />
+
+                    <h2 class="subtitle">Experiences:</h2>
+                    <ul class="js-experiences"></ul>
+            </div>
+        </div><!-- .grid  -->
+
+        <br />
+        <br />
+
+        <h2 class="subtitle hide">Todo</h2>
+        <ol class="todos hide">
+            <li class="done">Add users</li>
+            <li class="done">Modify users</li>
+            <li class="done">Get users</li>
+            <li class="done">Add experience categories</li>
+            <li>Users add experiences</li>
+            <li>Users add shots in experiences</li>
+            <li>Users add comments to shots</li>
+            <li>Users like1 and like2 the shots</li>
+            <li>Users modify existing experience to create new experience</li>
+        </ol>
+    </div>
+
+
+    <script src="_dbconfig.js"></script>
+    <!-- Firebase stuff :start -->
+    <script src="js/lib/firebase-app.js"></script>
+    <script src="js/lib/firebase-auth.js"></script>
+    <script src="js/lib/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        window.app = firebase.initializeApp( window.FIREBASE_CONFIG );
+        window.firebaseDb = firebase.database();
+    </script>
+    <!-- Firebase stuff :end -->
+
+    <script src="js/lib/jquery.slim.min.js"></script>
+    <script src="js/lib/jquery.tmpl.min.js"></script>
+    <script src="js/lib/date-formatter.js"></script>
+    <script src="templates/user.tpl.js"></script>
+    <script src="templates/category.tpl.js"></script>
+    <script src="templates/experience.tpl.js"></script>
+    <script src="templates/shot.tpl.js"></script>
+    <script src="templates/comment.tpl.js"></script>
+    <script src="templates/dropdown-option.tpl.js"></script>
+    <script src="templates/dropdown-option-xp.tpl.js"></script>
+    <script src="templates/dropdown-option-shot.tpl.js"></script>
+    <script src="templates/db-owner-str.tpl.js"></script>
+    <script src="templates/db-category-str.tpl.js"></script>
+    <script src="js/db-ops.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ui-updates.js"></script>
+</body>
+</html>
