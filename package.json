@@ -1,11 +1,15 @@
 {
   "name": "lipsum699",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Demo poject for trying out Firebase",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Navdeep Singh Bagga <navdeepb3191@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/navdeepsb/lipsum.git"
+  }
 }
